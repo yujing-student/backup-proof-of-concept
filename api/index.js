@@ -16,7 +16,7 @@
 const path = require('path')
 const express = require('express')
 // Import the path module for dirname function
-// Importeer de zelfgemaakte functie fetchJson uit de/helpers map
+// Importeer de zelfgemaakte functie fetchJsonTest uit de/helpers map
 
 const app = express()
 
