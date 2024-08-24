@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Ontwerp en maak een data driven online concept voor een opdrachtgever.",
   "main": "server.js",
-  "type": "module",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start": "node server.js"
+    "start":  "server.js"
   },
   "repository": {
     "type": "git",
