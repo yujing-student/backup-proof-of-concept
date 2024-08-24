@@ -1,145 +1,45 @@
-<%- include('./partials/head') %>
-<%- include('./partials/navigation') %>
+<%- include('./partials/head') %><!--maak gebruik van partias voor de header-->
 
-<body>
 
-<main class="">
+<main>
 
-    <div class="">
-        <section class="intro"><!--            intro daar werkt nth child niet-->
-            <h1 id="top">BNR business beats </h1>
-            <p class=" intro__p"><!--            animation link is de gele onderin-->
-                Blijf op de hoogte van het laatste nieuws terwijl je geniet van jouw favoriete muziek. Elk half uur een
-                nieuwsbulletin, en tussendoor non-stop muziek.
-                <br>
+    <div class="grid-container">
 
-            </p>
-            <p class="intro__p_link animationLink">
-                Ga naar: <a href="#nieuws" class="">Nieuws</a>
-            </p>
-
+        <section>
+            <h1><%= data.data.name %>
+                <%= data.data.prefix %>
+                <%= data.data.surname %>
+            </h1>
         </section>
-        <div class="stylingplaylist">
-            <picture>
-                <source srcset="assets/business.jpg?width=400&height=300&fit=cover&format=webp"
-                        type="image/webp">
 
-                <source srcset="assets/business.jpg?width=400&height=300&fit=cover&format=avif"
-                        type="image/avif">
+        <section class="">
+            <img class="image" src="/images/image.jpg" height="" alt="Dit is mijn foto"><!--dit hoort zo te staan omdat de images anders niet vindbaar is -->
+            <h2 class="about-me">Over mij</h2>
+            <p> Leeftijd: <%= data.data.custom.age %> jaar</p>
+            <p class="bio"> Bio: <%= data.data.bio %></p>
+            <p class="vooropleiding">Mijn vooropleiding:<a href="https://www.regiocollege.nl/mbo-opleiding/softwaredeveloper">
+                    <%= data.data.custom.opleiding %></a></p>
+            <p class="squad">Ik zit in squad: <%=datasquad.data.name%></p>
+        </section>
 
-                <img src="assets/business.jpg?width=200&height=100&fit=cover" loading="lazy"
-                     alt="Image of the house" class=" lazyload">
-            </picture>
-
-            <div class="playlist">
-
-                <button class="playlist__icon" title="playlist icon" name="playlist icon">
-
-                    <svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 12.5c0 2.3-.8 4.5-2 6.2l.7.8c1.5-1.9 2.4-4.4 2.4-7 0-3.1-1.2-5.9-3.2-8l-.5 1c1.6 1.8 2.6 4.3 2.6 7z"
-                              fill="#000000"></path>
-                        <path d="M15.8 6.4l-.5 1c1.1 1.4 1.7 3.2 1.7 5.1 0 1.7-.5 3.2-1.3 4.6l.7.8c1.1-1.5 1.7-3.4 1.7-5.4-.1-2.3-.9-4.4-2.3-6.1z"
-                              fill="#000000"></path>
-                        <path d="M14.8 8.4l-.5 1.1c.5.9.8 1.9.8 3 0 1-.3 2-.7 2.9l.7.9c.6-1.1 1-2.4 1-3.7-.1-1.6-.5-3-1.3-4.2zM8.137 8.89a.5.5 0 01-.312.11H4.5a.5.5 0 00-.5.5v5a.5.5 0 00.5.5h3.325a.5.5 0 01.312.11l4.05 3.24a.5.5 0 00.813-.39V6.04a.5.5 0 00-.812-.39L8.137 8.89z"
-                              fill="#000000"></path>
-                    </svg>
-                </button>
-                <form class="playlist__div">
-                    <label>
-                        <input type="range" class="playlist__inputRange" name="volume" min="0" max="10"
-                               title="range tussen 0 en 10" placeholder=""/>
-                    </label>
-                    <label for="volume" class="playlist__inputRange"></label>
-                </form>
-
-
-                <button class="playbutton grow " name="playlistbutton" role="button" id="playbuttonstart"
-                        title="playlistbutton">
-
-                    <!--     todo       kijken of pauzebutton op button zelf kan-->
-                    <span class="pauzebutton ">
-                </span>
-                </button>
-                <audio controls class="audio" tabindex=" 0">
-                    <source src="<%= audioUrl %>">
-                </audio>
-
-            </div>
-        </div>
-
-    </div>
-
-    <a href="#top" class="backToTop ">
-        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 8l1.41 1.41L7 3.83V16h2V3.83l5.59 5.58L16 8 8 0 0 8z" fill="#fff"></path>
-        </svg>
-    </a>
-    <div class="NieuwsFilter">
-        <section class="NieuwsFilter__section">
-            <h1 class="NieuwsFilter__h1" id="nieuws">Nieuws</h1>
-
-            <ul class="NieuwsFilter__carousssel">
-
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link ">Alles</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Economie</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Ondernemen&Werk</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Tech&Innovatie</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Mobiliteit</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Column&opinie</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Duurzaamheid</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Marketing&media</a></li>
-                <li class="nieuws__filter__li"><a href="#nieuws" class="NieuwsFilter__link">Juridisch</a></li>
-
+        <section class=""><!--social-media-->
+            <h2>Social media</h2>
+            <ul>
+                <li>
+                    <a href="https://github.com/yujing-student">
+                        <img src="/images/25231.png" width="40px">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/yu-jing-van-gerwen-a959431b7/">
+                        <img src="/images/linkedin.png" width="40px">
+                    </a>
+                </li>
             </ul>
-
         </section>
 
-
-        <section class="sectionArticles" id="nieuws">
-            <!--            <h1 id="nieuws">zie alle nieuwsartikelen</h1>-->
-
-            <% firstTenArticles.forEach(article => { %>
-                <article class="articles">
-                    <h2 class="article__title"><%= article.title %></h2>
-                    <p class="article__text"><%= article.introduction %></p>
-                    <% if (article.photo) { %>
-                        <picture>
-                            <source srcset="<%= article.photo.URL %>?width=400&height=300&fit=cover&format=avif"
-                                    type="image/avif">
-
-                            <source srcset="<%= article.photo.URL %>?width=400&height=300&fit=cover&format=webp"
-                                    type="image/webp">
-
-
-                            <img src="<%= article.photo.URL %>?width=200&height=100&fit=cover" loading="lazy"
-                                 alt="Image of the house"
-                                 width="<%= article.photo.URL %>"
-                                 height=" <%= article.photo.URL %>" class="article__img">
-                        </picture>
-                    <% } %>
-                </article>
-            <% }) %>
-
-        </section>
-        <div class="stylingButton">
-            <a
-                    class="bekijkmeerButton"
-                    href="">Alles bekijken
-            </a>
-        </div>
     </div>
 
 </main>
 
 <%- include('./partials/foot') %>
-
-<noscript>
-    <style type="text/css">
-        .audio {
-            /*position: absolute;*/
-            width: 16em;
-            top: 8em;
-            left: 65em;
-        }
-    </style>
-</noscript>

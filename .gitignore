@@ -1,23 +1,17 @@
+# Irritant bestand in elk mapje op macOS
 .DS_Store
+
+# Log bestanden
 logs
 *.logs
 npm-debug.log*
-node_modules
-.npm
-.env
-README.md
-docs/INSTRUCTIONS.md
 
-.idea/.gitignore
-.idea/modules.xml
-.idea/proof-of-concept.iml
-.idea/v1.iml
-.idea/vcs.xml
-LICENSE
-.idea/workspace.xml
-.idea/misc.xml
-.idea/jsLibraryMappings.xml
-.idea/dictionaries
-.idea
+# Alle node modules die gebruikt worden
+node_modules
+
+# Tijdelijke bestanden die door npm gebruikt worden
+.npm
+
+# Een geheim bestand met omgevingsvariabelen zoals API keys of wachtwoorden
+.env
 .vercel
-profileCard-Yu-Jing

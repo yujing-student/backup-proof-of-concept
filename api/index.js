@@ -26,24 +26,25 @@ app.set('views', path.join(__dirname, '../views'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));//deze regel code gebruiken vanwege middelware zodat de data leesbaar gemaakt word
 
+// Maak een GET route voor de index
+app.get('/', async function (request, response) {
+	// Render index.ejs uit de views map en geef uit FDND API opgehaalde data mee
+	// Haal data op uit de FDND API, ga pas verder als de data gedownload is
+	const data = await fetchJson('https://fdnd.directus.app/items/person/9')// https://whois.fdnd.nl/admin/ mijn nummer is 9
+	const datasquad = await fetchJson('https://fdnd.directus.app/items/squad/3')
+	data.data.custom = JSON.parse(data.data.custom);/*parsen the string information naar data zoals de rest*/
+	response.render('index', {data: data, datasquad: datasquad})
+//     https://stackoverflow.com/questions/71155182/who-to-render-multiple-fetch-function-in-ejs
+//     https://expressjs.com/en/5x/api.html#app.render
+//     https://dev.to/mochafreddo/understanding-resredirect-and-resrender-in-expressjs-usage-and-security-measures-2k60
 
 
-app.get('/', (request, response) => {
-    fetchJson('https://api.mobile.bnr.nl/v1/articles')
-        .then(articles => {
-            const firstTenArticles = articles.slice(0, 10)
-            response.render('index', {
-                firstTenArticles, audioUrl,
-            });
-        })
-})
-
-
+})// Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8004)
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-    // Toon een bericht in de console en geef het poortnummer door
-    console.log(`Application started on http://localhost:${app.get('port')}`)
+	// Toon een bericht in de console en geef het poortnummer door
+	console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 module.exports = app
 
