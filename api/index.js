@@ -42,15 +42,33 @@ app.use(express.urlencoded({extended: true}));//deze regel code gebruiken vanweg
 // })// Stel het poortnummer in waar express op moet gaan luisteren
 
 
-app.get('/',  (request, response) => {
-	fetchJson('https://api.mobile.bnr.nl/v1/articles')
-		.then(articles => {
-			const firstTenArticles = articles.slice(0, 10)
-			response.render('index', {
-				firstTenArticles, audioUrl,
-			});
-		})
+app.get('/', async function (request, response)  {
+	try {
+		const articles = await fetchJson('https://api.mobile.bnr.nl/v1/articles');
+		const firstTenArticles = articles.slice(0, 10);
+		const audioUrl = 'http://25683.live.streamtheworld.com/BNR_BUSINESS_BEATS.mp3';
+		response.render('index', {
+			firstTenArticles,
+			audioUrl,
+		});
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		// Handle errors, e.g., render an error page
+		response.status(500).send('Error fetching data');
+	}
 })
+//
+// app.get('/', (request, response) => {
+// 	fetchJson('https://api.mobile.bnr.nl/v1/articles')
+//
+// 		.then(articles => {
+// 			const firstTenArticles = articles.slice(0, 10)
+// 			const audioUrl = 'http://25683.live.streamtheworld.com/BNR_BUSINESS_BEATS.mp3';
+// 			response.render('index', {
+// 				firstTenArticles, audioUrl,
+// 			});
+// 		})
+// })
 
 
 app.set('port', process.env.PORT || 8004)
